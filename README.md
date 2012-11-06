@@ -44,6 +44,12 @@ Then:
 
 ### Usage
 
+#### Require
+
+You may need to add this to the top of the test or factories.rb or wherever you are going to use it:
+
+    require 'factory_girl-cache'
+
 #### Be Sure to Clear Cache After Every Use
 
 In your tests, be sure that the cache is cleared after anything that uses it is done, otherwise it probably will eventually pollute other tests if you are not careful!
