@@ -100,6 +100,26 @@ More examples:
     FactoryGirlCache.build_list(:post, 2)
     FactoryGirlCache.build_stubbed(:post)
 
+#### Store Results From Same Factory for Two Different Associations Separately
+
+Examples:
+
+    FactoryGirlCache.create(:post, :great_post) # will create
+    FactoryGirlCache.create(:post, :great_post) # will return post from cache
+    FactoryGirlCache.create(:post, :bad_post) # will create
+    FactoryGirlCache.create_list(:post, :great_posts, 2) # will create list of 2
+    FactoryGirlCache.create_list(:post, :bad_posts, 2) # will create list of 2
+    FactoryGirlCache.create_list(:post, :bad_posts, 2) # will return list of 2 from cache
+    FactoryGirlCache.build(:post, :great_post) # will build
+    FactoryGirlCache.build(:post, :great_post) # will return post from cache
+    FactoryGirlCache.build(:post, :bad_post) # will build
+    FactoryGirlCache.build_list(:post, :great_posts, 2) # will build list of 2
+    FactoryGirlCache.build_list(:post, :bad_posts, 2) # will build list of 2
+    FactoryGirlCache.build_list(:post, :bad_posts, 2) # will return list of 2 from cache
+    FactoryGirlCache.build_stubbed(:post, :great_post) # will build stubbed
+    FactoryGirlCache.build_stubbed(:post, :great_post) # will return post from cache
+    FactoryGirlCache.build_stubbed(:post, :bad_post) # will build stubbed
+
 ### License
 
 Copyright (c) 2012 Gary S. Weaver, released under the [MIT license][lic].
