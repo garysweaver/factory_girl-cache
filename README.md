@@ -97,25 +97,25 @@ More examples:
 
 #### Store Results From Same Factory for Two Different Associations Separately
 
-Because it will use the method name and all arguments (after dup-ing) for the cache key, but will remove the second argument if ones exists after using it as the cache key, you can differentiate results from the same factory/store them in different caches.
+Because it will use the method name and all arguments for the cache key, but will look for and remove the option `:cached_as` and used that instead of the factory name in the cache key.
 
-Examples:
+For example:
 
-    FactoryGirlCache.create(:post, :great_post) # will create
-    FactoryGirlCache.create(:post, :great_post) # will return post from cache
-    FactoryGirlCache.create(:post, :bad_post) # will create
-    FactoryGirlCache.create_list(:post, :great_posts, 2) # will create list of 2
-    FactoryGirlCache.create_list(:post, :bad_posts, 2) # will create list of 2
-    FactoryGirlCache.create_list(:post, :bad_posts, 2) # will return list of 2 from cache
-    FactoryGirlCache.build(:post, :great_post) # will build
-    FactoryGirlCache.build(:post, :great_post) # will return post from cache
-    FactoryGirlCache.build(:post, :bad_post) # will build
-    FactoryGirlCache.build_list(:post, :great_posts, 2) # will build list of 2
-    FactoryGirlCache.build_list(:post, :bad_posts, 2) # will build list of 2
-    FactoryGirlCache.build_list(:post, :bad_posts, 2) # will return list of 2 from cache
-    FactoryGirlCache.build_stubbed(:post, :great_post) # will build stubbed
-    FactoryGirlCache.build_stubbed(:post, :great_post) # will return post from cache
-    FactoryGirlCache.build_stubbed(:post, :bad_post) # will build stubbed
+    FactoryGirlCache.create(:post, cached_as: :great_post) # will create
+    FactoryGirlCache.create(:post, cached_as: :great_post) # will return post from cache
+    FactoryGirlCache.create(:post, cached_as: :bad_post) # will create
+    FactoryGirlCache.create_list(:post, 2, cached_as: :great_posts) # will create list of 2
+    FactoryGirlCache.create_list(:post, 2, cached_as: :bad_posts) # will create list of 2
+    FactoryGirlCache.create_list(:post, 2, cached_as: :bad_posts) # will return list of 2 from cache
+    FactoryGirlCache.build(:post, cached_as: :great_post) # will build
+    FactoryGirlCache.build(:post, cached_as: :great_post) # will return post from cache
+    FactoryGirlCache.build(:post, cached_as: :bad_post) # will build
+    FactoryGirlCache.build_list(:post, 2, cached_as: :great_posts) # will build list of 2
+    FactoryGirlCache.build_list(:post, 2, cached_as: :bad_posts) # will build list of 2
+    FactoryGirlCache.build_list(:post, 2, cached_as: :bad_posts) # will return list of 2 from cache
+    FactoryGirlCache.build_stubbed(:post, cached_as: :great_post) # will build stubbed
+    FactoryGirlCache.build_stubbed(:post, cached_as: :great_post) # will return post from cache
+    FactoryGirlCache.build_stubbed(:post, cached_as: :bad_post) # will build stubbed
 
 ### License
 
