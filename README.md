@@ -1,7 +1,11 @@
 FactoryGirl Cache
 =====
 
-Instead of:
+A wrapper for FactoryGirl that caches the build, build_list, build_stubbed, create, and create_list methods using the method (as symbol) and arguments as the key for the cache, with the only wierdness being that if the second argument is a symbol, it removes that from the arguments before calling FactoryGirl with the arguments and block, such that it can use different caches for different associations.
+
+It does this with method_missing on the FactoryGirlCache module calling via `__send__`, so anything that FactoryGirl (literally, the module) can do, FactoryGirlCache should be able to do.
+
+Just as an example, instead of:
 
     FactoryGirl.create(:post)
     FactoryGirl.create_list(:post, 2)
@@ -101,6 +105,8 @@ More examples:
     FactoryGirlCache.build_stubbed(:post)
 
 #### Store Results From Same Factory for Two Different Associations Separately
+
+Because it will use the method name and all arguments (after dup-ing) for the cache key, but will remove the second argument if ones exists after using it as the cache key, you can differentiate results from the same factory/store them in different caches.
 
 Examples:
 

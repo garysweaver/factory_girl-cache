@@ -4,7 +4,7 @@ require "factory_girl-cache/version"
 
 Gem::Specification.new do |s|
   s.name        = 'factory_girl-cache'
-  s.version     = RestfulJson::VERSION
+  s.version     = FactoryGirlCache::VERSION
   s.authors     = ['Gary S. Weaver']
   s.email       = ['garysweaver@gmail.com']
   s.homepage    = 'https://github.com/garysweaver/factory_girl-cache'
