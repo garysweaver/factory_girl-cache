@@ -125,6 +125,13 @@ For example:
     FactoryGirlCache.build_stubbed(:post, cached_as: :great_post) # will return post from cache
     FactoryGirlCache.build_stubbed(:post, cached_as: :bad_post) # will build stubbed
 
+#### Completely Override Cache Key
+
+If the objects are equivalent, you can do this:
+
+    FactoryGirlCache.create(:bar, cache_key: :bird) # will create
+    FactoryGirlCache.create(:foo, cached_as: :bird) # will return bar from cache
+
 ### License
 
 Copyright (c) 2012 Gary S. Weaver, released under the [MIT license][lic].
