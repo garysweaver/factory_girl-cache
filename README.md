@@ -63,6 +63,14 @@ With RSpec:
       # ...
     end
 
+Even better, in RSpec you can clear cache after every test by adding this to `spec/spec_helper.rb`:
+
+    Spec::Runner.configure do |config|
+      config.after(:each) do
+        FactoryGirlCache.clear
+      end
+    end
+
 You can also clear cache during your tests, if it makes sense.
 
 #### Use That Cache
