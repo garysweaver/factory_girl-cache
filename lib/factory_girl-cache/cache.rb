@@ -13,9 +13,9 @@ module FactoryGirlCache
         keys = args.dup
         args.delete_at(1) if args.size > 1 && args[1].is_a?(Symbol)
         @factory_girl_cache ||= {}
-        @factory_girl_cache[[m, *keys]] ||= Math.__send__(m, *args, &block)
+        @factory_girl_cache[[m, *keys]] ||= FactoryGirl.__send__(m, *args, &block)
       else
-        Math.__send__(m, *args, &block)
+        FactoryGirl.__send__(m, *args, &block)
       end
     end
 

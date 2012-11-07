@@ -27,14 +27,11 @@ To clear the cache:
 
 This may seem completely odd, e.g. creating something would imply really creating a new instance, as would building. And you'll get the same id back. Why would you want to do that?
 
-By caching factory-created/built/stubbed instances and lists, you may be able to at least temporarily avoid issues with circular references and reduce time spent on nested model creation avoiding the dreaded:
-
-    SystemStackError:
-      stack level too deep
+Originally, the idea was that this could be used to avoid circular references, but there are other complexities in factory interdependencies that keep the cache alone from being a silver bullet for those issues. However, for some cases it could still significantly speed up accessing factory created instances, if you are careful.
 
 This gem should not affect FactoryGirl itself. It just provides an alternate way to use FactoryGirl that makes it behave a bit differently.
 
-Please understand what you are doing by using this. This is not just some way to make FactoryGirl faster.
+Please understand what you are doing by using this. Handle it carefully and don't shoot yourself with it!
 
 ### Installation
 
