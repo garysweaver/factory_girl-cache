@@ -11,7 +11,7 @@ module FactoryGirlCache
       if [:build, :build_list, :build_stubbed, :create, :create_list].include?(m)
         keys = args.dup
         options = args.last
-        cached_as = options.is_a?(Hash) ? options.remove(:cached_as) : nil
+        cached_as = options.is_a?(Hash) ? options.delete(:cached_as) : nil
         keys[0] = cached_as if !(cached_as.nil?) && keys.size > 0
         @factory_girl_cache ||= {}
         @factory_girl_cache[[m, *keys]] ||= FactoryGirl.__send__(m, *args, &block)
